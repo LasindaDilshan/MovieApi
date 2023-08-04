@@ -1,0 +1,16 @@
+<p>movie-theater-form works!</p>
+<form [formGroup]="form" (submit)="saveChanges()">
+<mat-form-field appearance="outline">
+  <mat-label>
+    Name
+  </mat-label>
+  <input formControlName="name" matInput/>
+  <mat-error> The name field is required</mat-error>
+</mat-form-field>
+<h4> Select The Location Of The Theater</h4>
+<app-map (onSelectedLocation)="onSelectedLocation($event)" [intialCoordinate]="intialCoordinate"></app-map>
+<div>
+  <button mat-flat-button color="primary" [disabled]="form.invalid">Save Changes</button>
+  <a mat-stroked-button routerLink="/movietheaters"> Cancel</a>
+</div>
+</form>

@@ -1,0 +1,37 @@
+mat-toolbar
+{
+  position: sticky;
+  position: -webkit-sticky;
+  top:0;
+  z-index: 1000;
+}
+.fff
+{
+  display: flex;
+  flex-wrap: wrap;
+}
+.one{
+  flex: auto;
+}
+.two
+
+{
+  flex: auto;
+
+}
+.three
+{
+  flex: auto;
+
+}
+.four
+{
+  flex: auto;
+
+}
+
+.five
+{
+  flex: auto;
+
+}
