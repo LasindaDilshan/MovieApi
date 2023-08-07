@@ -28,7 +28,7 @@ export class FormGenreComponent {
   }
   saveChanges() {
     this.onSaveChanges.emit(this.form.value);
-    this.router.navigate(['genres']);
+   // this.router.navigate(['genres']);
   }
   getErrorMessageFieldName() {
     const field = this.form.get('name');
