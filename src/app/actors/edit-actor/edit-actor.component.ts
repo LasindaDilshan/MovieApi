@@ -9,6 +9,7 @@ import { actorCreationDTO, actorDTo } from '../actorCreationDTO';
 })
 export class EditActorComponent implements OnInit {
   model: actorDTo = {
+    id: 1,
     name: 'Lasi Holloand',
     dateOfBirth: new Date(),
     picture:

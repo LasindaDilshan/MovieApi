@@ -37,6 +37,7 @@ import { MultipleSelectorComponent } from './utilities/multiple-selector/multipl
 import { ActorsAutocompleteComponent } from './actors/actors-autocomplete/actors-autocomplete.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DisplayErrorsComponent } from './utilities/display-errors/display-errors.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { DisplayErrorsComponent } from './utilities/display-errors/display-error
     FormsModule,
     MarkdownModule.forRoot(),
     LeafletModule,
-    HttpClientModule
+    HttpClientModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent],
