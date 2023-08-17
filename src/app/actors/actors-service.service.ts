@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { actorCreationDTO } from './actorCreationDTO';
+import { actorCreationDTO, actorDTo } from './actorCreationDTO';
 import { formatDateFormData } from '../utilities/input-img/util';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,24 @@ import { HttpClient } from '@angular/common/http';
 export class ActorsServiceService {
   private APIURl = 'https://localhost:7030/api';
   private SPECIFICURl = '/Actors';
+
+
+  get(page:number , recordPerPage:number):Observable<any>
+  {
+    let params = new HttpParams();
+    params = params.append('Page', page.toString());
+    params = params.append('recordPerPage',recordPerPage.toString());
+    return this.http.get<actorCreationDTO[]>(this.APIURl+ this.SPECIFICURl , {observe:'response' ,params});
+  }
+  getByID(id : number) : Observable<actorDTo>
+  {
+    return this.http.get<actorDTo>(`${this.APIURl+ this.SPECIFICURl}/${id}`);
+  }
+  edit(id:number , actor: actorCreationDTO)
+  {
+    const formData = this.buildFormData(actor);
+    return this.http.put(`${this.APIURl}/${id}`, formData);
+  }
   constructor(private http: HttpClient) { }
 
   create(actor : actorCreationDTO)
@@ -37,4 +56,9 @@ export class ActorsServiceService {
 
     return formData;
   }
+}
+export interface PaginationSTO
+{
+    Page:number;
+    recordPerPage :number;
 }

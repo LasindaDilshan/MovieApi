@@ -1,3 +1,46 @@
-<h2>Actors</h2>
+<div class="create-button">
+    <button  mat-flat-button  color="primary" routerLink="/actors/create">Create new</button>
+</div>
 
-<button mat-flat-button color="primary" routerLink="/actors/create">Create new</button>
+<app-generic-list [list]="actors">
+    <ng-container content class="container">
+        <table mat-table [dataSource]="actors" class="mat-elevation-z8 table-index">
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef>Name</th>
+                <td mat-cell *matCellDef="let element">{{element.name}}</td>
+            </ng-container>
+            <!-- <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>actions</th>
+                <td mat-cell *matCellDef="let element">
+                    <a class="container-buttons" routerLink="/actors/edit/{{element.id}}" 
+                    mat-flat-button color="primary">Edit</a>
+                <button class="container-buttons" mat-flat-button color="warn" 
+                    [swal]="{title:'Cofirmation' ,text:'Are you sure that you want to delee the record?',
+                    showCancelButton:true}"
+                    (confirm)="delete(element.id)">
+                    Delete
+                </button>
+                </td>
+            </ng-container> -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>actions</th>
+                <td mat-cell *matCellDef="let element">
+                   <a class="container-buttons" routerLink="/actors/edit/{{element.id}}" 
+                   mat-flat-button color="primary">Edit</a>
+               <button class="container-buttons" mat-flat-button color="warn" 
+                   [swal]="{title:'Cofirmation' ,text:'Are you sure that you want to delee the record?',
+                   showCancelButton:true}"
+                   (confirm)="delete(element.id)">
+                   Delete
+               </button>
+                </td>
+             </ng-container>
+            <tr mat-header-row *matHeaderRowDef="colmnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: colmnsToDisplay"></tr>        
+        </table>
+        <mat-paginator [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons
+        [length]="totalamountOfRecords" pageSize="5" (page)="updatePagination($event)">
+
+        </mat-paginator>
+    </ng-container>
+</app-generic-list>

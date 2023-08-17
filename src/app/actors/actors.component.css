@@ -1,0 +1,16 @@
+.container
+{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.container-buttons
+{
+  flex-direction: row;
+  padding: 5px;
+  margin-left: 1rem;
+}
+.create-button{
+    margin-bottom: 1rem;
+}
