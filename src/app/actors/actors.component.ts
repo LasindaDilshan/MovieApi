@@ -16,6 +16,7 @@ colmnsToDisplay = ['name','actions'];
   totalamountOfRecords = 0;
   currentpage=1;
   pageSize = 5;
+  
 ngOnInit(): void {
   this.loadData();
 }
@@ -35,7 +36,12 @@ loadData()
   );
 }
 delete(id : number ){
-
+  this.actorsService.delete(id).subscribe(
+    ()=>{
+      this.loadData();
+    }
+  );
+  
 }
 updatePagination($event : PageEvent)
 {
@@ -43,8 +49,6 @@ updatePagination($event : PageEvent)
   this.pageSize = $event.pageSize;
   this.loadData();
 }
-
-
 }
 function parseNullableStringToInt(input: string | null): number | null {
   if (input === null) {

@@ -26,7 +26,7 @@ export class ActorsServiceService {
   edit(id:number , actor: actorCreationDTO)
   {
     const formData = this.buildFormData(actor);
-    return this.http.put(`${this.APIURl}/${id}`, formData);
+    return this.http.put(`${this.APIURl+ this.SPECIFICURl}/${id}`, formData);
   }
   constructor(private http: HttpClient) { }
 
@@ -55,6 +55,9 @@ export class ActorsServiceService {
     }
 
     return formData;
+  }
+  delete(id : number){
+    return this.http.delete(`${this.APIURl+ this.SPECIFICURl}/${id}`);
   }
 }
 export interface PaginationSTO
