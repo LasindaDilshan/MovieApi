@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { movieTheaterCreationDto } from './movietheatermodel';
+import { movieTheaterCreationDto, movieTheaterDto } from './movietheatermodel';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class MovieTheatersService {
 
   private APIURl = 'https://localhost:7030/api';
-  private SPECIFICURl = '/genres'; 
+  private SPECIFICURl = '/MovieTheater'; 
 
   constructor(private http: HttpClient) { }
 
@@ -21,10 +21,10 @@ export class MovieTheatersService {
     return this.http.put(`${this.APIURl}/${id}`, MovieTheaterCreationDto);
   }
   public get():Observable<movieTheaterCreationDto[]>{
-    return this.http.get<movieTheaterCreationDto[]>(this.APIURl);
+    return this.http.get<movieTheaterCreationDto[]>(this.APIURl+this.SPECIFICURl);
   }
-  public getById(id : number):Observable<movieTheaterCreationDto>{
-    return this.http.get<movieTheaterCreationDto>(`${this.APIURl}/${id}`);
+  public getById(id : number):Observable<movieTheaterDto>{
+    return this.http.get<movieTheaterDto>(`${this.APIURl+this.SPECIFICURl}/${id}`);
   }
 
 }

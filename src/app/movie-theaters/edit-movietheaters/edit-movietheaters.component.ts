@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { movieTheaterCreationDto } from '../movietheatermodel';
+import { movieTheaterCreationDto, movieTheaterDto } from '../movietheatermodel';
 import { ActivatedRoute } from '@angular/router';
 import { MovieTheatersService } from '../movie-theaters.service';
 
@@ -9,15 +9,19 @@ import { MovieTheatersService } from '../movie-theaters.service';
   styleUrls: ['./edit-movietheaters.component.css']
 })
 export class EditMovietheatersComponent implements OnInit{
-  emodel!: movieTheaterCreationDto; 
+  emodel!: movieTheaterDto; 
   constructor(private activatedRoute : ActivatedRoute , private movieTheaterservoce : MovieTheatersService)
   {
-
+    this.loaddata();
   }
   ngOnInit(): void {
+   
+  }
+  loaddata(){
     this.activatedRoute.params.subscribe((params) => {
       this.movieTheaterservoce.getById(params["id"]).subscribe((movieTheater) => {
         this.emodel = movieTheater;
+        console.log( this.emodel)
       });
     });
   }

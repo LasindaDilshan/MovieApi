@@ -13,8 +13,7 @@ export class MovieTheaterFormComponent implements OnInit{
   @Output()
   onSaveChanges = new EventEmitter<movieTheaterCreationDto>();
 
-  @Input()
-  model! : movieTheaterDto;
+  @Input() model! : movieTheaterDto;
   intialCoordinate : coordinatesMap[]=[];
 
   constructor(private formBuilder: FormBuilder){}

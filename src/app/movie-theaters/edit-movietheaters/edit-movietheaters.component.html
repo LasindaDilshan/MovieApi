@@ -1,2 +1,3 @@
 <p>edit-movietheaters works!</p>
-<app-movie-theater-form [model]="emodel" (onSaveChanges)="savechanges($event)"></app-movie-theater-form>
+<app-movie-theater-form *ngIf="emodel" [model]="emodel" (onSaveChanges)="savechanges($event)"></app-movie-theater-form>
+<mat-spinner *ngIf="!emodel"></mat-spinner>
